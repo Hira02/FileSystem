@@ -12,6 +12,17 @@ Node *FileSystem::getNode()
     return root;
 }
 
+void FileSystem::initialize(){
+    fileSystem = nullptr;
+}
+
+FileSystem *FileSystem::getCurrentFileSystem()
+{
+    if (!fileSystem)
+        fileSystem = new FileSystem();
+    return fileSystem;
+}
+
 vector<string> FileSystem ::ls(string input)
 {
     vector<string> ans;
@@ -35,7 +46,7 @@ vector<string> FileSystem ::ls(string input)
             if (temp->folderMap[names[i]])
             {
                 Node *folders = temp->folderMap[names[i]];
-                cout << (folders->folderMap).size();
+                //cout << (folders->folderMap).size();
                 map<string, Node *>::iterator it;
                 for (it = (folders->folderMap).begin(); it != (folders->folderMap).end(); it++)
                 {

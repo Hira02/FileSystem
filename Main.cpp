@@ -2,12 +2,12 @@
 #include "FileSystem.h"
 using namespace std;
 
+FileSystem* FileSystem::fileSystem = nullptr;
+//FileSystem::initialize();
+
 int main()
 {
-    FileSystem* f1 = new FileSystem();
-    // f1->getNode()->ls;
-    vector<string> x = f1->ls("/");
-    //   cout<<x.size();
+    FileSystem *f1 = FileSystem::getCurrentFileSystem();
     f1->mkdir("/a/b/c/d2");
     f1->mkdir("/a/b/c/d1");
     vector<string> y = f1->ls("/a/b/c");
